@@ -15,11 +15,11 @@ def fetch_results(search_term, number_results, language_code):
     return search_term, response.text
 
 #test
-keyword, html = fetch_results('Vintage hiking shoes men', 100, 'en')
+keyword, html = fetch_results("SEARCH TERM/PHRASE", 100, 'en')
 
 soup = BeautifulSoup(html, 'html.parser')
 
-#prettifying content
+#prettify beautifulSoup object
 print(soup.prettify())
 
 link_s = []
@@ -27,6 +27,7 @@ for bar in soup.findAll("a", attrs={'href': re.compile("^htt")}):
     bar.get("href")
     link_s.append(bar.get("href"))
 
+#return result URLs
 for link in link_s:
     print(link)
 
